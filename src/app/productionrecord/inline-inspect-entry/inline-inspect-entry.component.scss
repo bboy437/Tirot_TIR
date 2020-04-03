@@ -1,0 +1,96 @@
+// .mat-card {
+//      background: rgb(215, 215, 255);
+//     padding : 5px;
+//     padding-left: 10px;
+//     padding-right: 10px;
+//     border-radius: 10px;
+// }
+
+.card-container-right{
+    display: inline;
+    font-size: 16px;
+  }
+
+  .column{
+    background: #ff9900;
+    padding : 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+  }
+  .column1{
+    background:#2eb82e;
+    padding : 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+  }
+
+  .rowmatcardone{
+    background: rgb(240, 228, 222);
+    padding : 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .rowmatcardtwo{
+    background: rgb(172, 216, 174);
+    padding : 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  // .mat-button-toggle:nth-child(even){
+  //   background: rgb(240, 123, 123);
+  // }
+
+mat-button-toggle.mat-button-toggle-checked {
+    background: 	#32CD32;
+    color: rgb(255, 255, 255);
+    outline: none;
+}
+
+mat-button-toggle {
+  background: 	#619264;
+  width: 100%;
+}
+
+.mat-btn-finish-operation {
+  background: rgb(151, 255, 125);
+}
+
+.inputright { 
+  text-align: right;
+  color: rgb(255, 255, 255);
+ }
+
+// mat-button-toggle.cdk-focused{
+//   background: 	rgb(240, 4, 4);
+//   color: rgb(255, 255, 255);
+//   outline: none;
+// }
+
+// mat-button-toggle.cdk-mouse-focused {
+//   background: 	#32CD32;
+//     color: rgb(255, 255, 255);
+//     outline: none;
+
+// }
+
+// div.mat-button-toggle-label-content {
+//     display: initial !important;
+  
+// }
+
+
+// .mat-button-toggle {
+//   background: 	rgb(255, 255, 255);
+//   color: rgb(0, 0, 0);
+//   outline: none;
+// }
+
+// .mat-button-toggle-checked {
+//   background: 	rgb(57, 182, 57);
+//   color: rgb(255, 255, 255);
+//   outline: none;
+// }

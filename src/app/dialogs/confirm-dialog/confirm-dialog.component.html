@@ -1,0 +1,33 @@
+<div class="container">
+  <mat-toolbar color="primary">
+    <div [ngSwitch]="data.Messagetype">
+      <mat-icon *ngSwitchCase="'Error'" class="iconsize">info</mat-icon>
+      <mat-icon *ngSwitchCase="'Complete'" class="iconsize">info</mat-icon>
+      <mat-icon *ngSwitchCase="'Validate'" class="iconsize">info</mat-icon>
+    </div>
+    {{ data.Messagetitle }}
+  </mat-toolbar>
+  <br />
+  <mat-grid-list cols="12" rowHeight="50px">
+    <mat-grid-tile class="text-inside-grid" colspan="12">
+      <h3 class="textbody" mat-dialog-title>{{ data.Messagebody }}</h3>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  <mat-grid-list cols="12" rowHeight="50px">
+    <mat-grid-tile colspan="12">
+      <button
+        mat-raised-button
+        color="warn"
+        (click)="onClickConfirm()"
+        [mat-dialog-close]="true"
+      >
+        Confirm
+      </button>
+
+      <button mat-raised-button (click)="onClickCancle()" tabindex="-1">
+        Cancel
+      </button>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

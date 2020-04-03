@@ -1,0 +1,52 @@
+.spinner-loading-shade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 56px;
+    right: 0;
+    background: rgba(0, 0, 0, 0.15);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+.table-header {
+    background-color: #327ebd;
+    color: white;
+    padding: 0 5px;
+    height: 40px;
+}
+.table-container {
+    padding: 5px 15px 15px 15px;
+}
+.table-component-holder {
+    border: 1px solid #327ebd;
+    background-color: white;
+}
+
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .formfield-full-width {
+    width: 100%;
+  }
+
+  .inputright { text-align: right }
+// .mat-row:hover {
+//   background-color:#ffe0cc;
+// }
+
+.mat-header-cell {
+    display:flex;
+    justify-content:center;
+ }
+
+   
+.mat-column-actions {
+    flex: 0 0 85px;
+    align-content: center;
+}

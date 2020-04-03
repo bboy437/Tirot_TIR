@@ -1,0 +1,32 @@
+.mat-toolbar-row {
+  height: 40px;
+}
+
+.mat-header-row {
+  background-color: #9cb5e4;
+  color: white;
+}
+ 
+
+
+.mat-row:nth-child(even) {
+  background-color: #e9e5e5;
+  color: white;
+}
+
+
+.mat-row {
+  min-height: 33px;
+}
+
+.mat-toolbar-row {
+  height: 40px;
+}
+
+.table-container {
+  padding: 5px 15px 15px 15px;
+}
+.table-component-holder {
+  border: 1px solid #327ebd;
+  background-color: white;
+}

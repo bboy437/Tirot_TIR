@@ -1,0 +1,105 @@
+<div fxLayout="column" class="components-container-gt-xs" fxLayoutGap="20px">
+
+  <div class="spinner-loading-shade" *ngIf="isLoadingResults">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+  </div>
+  
+    <div fxFlex class="table-component-holder mat-elevation-z4">
+      <mat-toolbar class="table-header">
+        <h1 class="mat-headline center-align">Customer</h1>
+      </mat-toolbar>
+  
+      <div class="table-container">
+  
+        <table width="100%">
+          <tr>
+            <td style="width: 90%;">
+              <button  mat-raised-button color="primary"(click)="btnSaveClick()">Save</button>
+            </td>
+            <td style="width: 10%; ">
+              <button mat-raised-button color="accent" (click)="btnCloseClick()">Close</button>
+            </td>
+          </tr>
+        </table>
+
+        <mat-divider style="padding-top: 10px;padding-bottom: 5px"></mat-divider>
+
+        
+          <!-- <form class="example-form"> -->
+            <table width="100%">
+            <tr>
+              <td style="width: 10%;">
+                <mat-form-field class="example-full-width">
+                  <input matInput maxlength="10" required placeholder="Customer Code" [(ngModel)]="objRow.customerCode"[ngModelOptions]="{standalone: true}" >
+                </mat-form-field>
+              </td>
+              <td style="width: 30%;">
+                <mat-form-field class="example-full-width">
+                  <input matInput #input maxlength="100" required placeholder="Customer Name" [(ngModel)]="objRow.customerName" [ngModelOptions]="{standalone: true}" >
+                </mat-form-field>
+              </td>  
+              <td style="width: 10%;">
+                <mat-form-field class="example-full-width">
+                  <input matInput #input maxlength="25" required placeholder="Short Name" [(ngModel)]="objRow.customerShortName" [ngModelOptions]="{standalone: true}" >
+                </mat-form-field>
+              </td>
+            </tr>
+            </table>
+            <!-- <tr> -->
+              <table width="100%">
+              <td style="width: 100%;">
+                <mat-form-field class="example-full-width">
+                  <input matInput  #input maxlength="100"required placeholder="Address 1" [(ngModel)]="objRow.address1" [ngModelOptions]="{standalone: true}" >
+                </mat-form-field>
+              </td>
+            <!-- </tr> -->
+            <tr>
+              <td style="width: 100%">
+                <mat-form-field class="example-full-width">
+                  <input matInput #input maxlength="100"placeholder="Address 2" [(ngModel)]="objRow.address2" [ngModelOptions]="{standalone: true}" >
+                </mat-form-field>
+              </td>
+            </tr>
+          </table>
+          
+          <table width="100%">
+            <tr>
+              <td style="width: 50%;">
+                <mat-form-field class="example-full-width">
+                  <input matInput #input maxlength="50"placeholder="Contract Person" [(ngModel)]="objRow.contractPerson" [ngModelOptions]="{standalone: true}" >
+                </mat-form-field>
+              </td>
+              <td style="width: 50%;">
+                <mat-form-field class="example-full-width">
+                  <input matInput #input maxlength="50"placeholder="Email Address" [(ngModel)]="objRow.emailAddress" [ngModelOptions]="{standalone: true}" >
+                  <mat-icon matSuffix>email</mat-icon>
+                </mat-form-field>
+              </td>  
+            </tr>
+          </table>
+
+          <table width="100%">
+            <tr>
+              <td style="width: 50%;">
+                <mat-form-field class="example-full-width">
+                  <input matInput #phoneNo maxlength="10"placeholder="Phone Number"[(ngModel)]="objRow.phoneNo" [ngModelOptions]="{standalone: true}" >
+                  <mat-icon matSuffix>phone</mat-icon>
+                  <!-- <mat-hint align="end">{{phoneNo.value.length}} / 10</mat-hint> -->
+                </mat-form-field>
+              </td>
+              <td style="width: 50%;">
+                <mat-form-field class="example-full-width">
+                  <input matInput #input maxlength="10"placeholder="Fax Number" [(ngModel)]="objRow.faxNo" [ngModelOptions]="{standalone: true}" >
+                </mat-form-field>
+              </td>  
+            </tr>
+          </table>
+
+            
+            <mat-checkbox [(ngModel)]="objRow.inActivated" [ngModelOptions]="{standalone: true}"  >InActive</mat-checkbox>
+
+          <!-- </form> -->
+        
+      </div>
+    </div>
+  </div>

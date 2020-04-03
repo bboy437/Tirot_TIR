@@ -1,0 +1,39 @@
+
+.table-container {
+    padding: 5px 15px 15px 15px;
+  
+}
+.table-component-holder {
+    border: 1px solid #327ebd;
+    background-color: white;
+}
+
+.example-form {
+    min-width: 300px;
+    max-width: 500px;
+    width: 100%;
+}
+  
+.example-full-width {
+    width: 100%;
+
+}
+.time-picker-wrapper {
+    padding: 1rem;
+  }
+  
+.igx-input-group + .igx-input-group, .button-wrapper, .igx-datePicker, .igx-time-picker {
+    margin-top: 32px;
+}
+
+.input-group-form {
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
+    padding: 24px 16px;
+    margin-bottom: 48px;
+}
+
+.sample-title {
+    margin-top: 0;
+}
+
+.inputright { text-align: right }

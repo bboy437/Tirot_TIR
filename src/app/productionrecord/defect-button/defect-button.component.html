@@ -1,0 +1,33 @@
+<button mat-raised-button [disabled]="!Editable" class="mat-btn-defect" style="background-color: #539e59;" (click)="btnDefectClick()"  >
+  <table style="width: 100%;padding: 0px">
+    <tr>
+      <td>
+          <div [ngSwitch]="objDefect.defectType">
+              <div *ngSwitchCase="'S'">
+                  <table style="width: 100%;padding: 0px">
+                      <tr>
+                        <td></td>
+                        <td style="width: 25px;">
+                            <mat-icon style="font-size: 35px;">brightness_1</mat-icon>
+                        </td>
+                        <td></td>
+                      </tr>
+                  </table>
+              </div>
+              <div *ngSwitchCase="'L'">
+                  <mat-progress-bar mode="determinate" [value]="isClickValue" ></mat-progress-bar>
+              </div> 
+            </div>
+      </td>
+    </tr>
+    <tr style="height: 5px" >
+        <td colspan="3"></td>
+    </tr>
+    <tr>
+      <td colspan="3">
+         <!-- <label>{{objDefect.defectName}}</label>   -->
+         <mat-label style="word-wrap: break-word; white-space: pre-wrap; " >{{objDefect.defectName}}</mat-label>
+      </td>
+    </tr>
+  </table>
+</button>

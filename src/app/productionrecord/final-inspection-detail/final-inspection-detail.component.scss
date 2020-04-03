@@ -1,0 +1,64 @@
+.card-container-right{
+    display: inline;
+    font-size: 16px;
+  }
+
+.table-container {
+    padding: 5px 15px 15px 15px;
+}
+
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+.mat-header-cell {
+    display:flex;
+    justify-content:center;
+  }
+
+.mat-row{
+    min-height:33px;
+}
+
+.mat-header-row{
+    background-color: #b2b7f8;
+    padding:3px;
+}
+.mat-row:nth-child(even){
+    background-color: #e9e5e5;
+    height: 10px;
+    color: white;
+}
+.mat-row:hover {
+    background-color:#faf9c8d3;
+}
+// .mat-header-cell{
+//     font-size: 14px;
+//     font-weight: bold;
+// }
+.mat-cell{
+    text-align: center;
+}
+
+.mat-cell.Name{
+    text-align: left;
+}
+
+.spinner-loading-shade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 56px;
+    right: 0;
+    background: rgba(0, 0, 0, 0.15);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+//   .mat-column-TankNo{
+//     flex: 0 0 5vw;
+// }
+  

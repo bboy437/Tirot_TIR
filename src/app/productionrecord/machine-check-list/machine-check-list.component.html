@@ -1,0 +1,328 @@
+<div fxLayout="column" class="components-container-gt-xs" fxLayoutGap="5px">
+
+  <div fxFlex class="mat-elevation-z4" style="padding: 10px; background-color: rgb(198, 195, 240);">
+    <div class="container" fxLayout="row" fxLayout.xs="column" fxFlexFill>
+      <div fxFlex="100">
+        <app-production-record-header [ProductionPlanID]="objParams.productionPlanID" [IsStart]="true" >
+        </app-production-record-header>
+      </div>
+      <div fxFlex="15px"></div>
+      <div fxFlex="90px">
+        <button mat-raised-button style="line-height: 46px;" color="accent" (click)="btnCloseClick()">
+          <!-- <mat-icon>close</mat-icon> -->
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+  <mat-horizontal-stepper [linear]="isLinear" #stepper>
+    <mat-step [stepControl]="FormGroup1">
+      <form [formGroup]="FormGroup1">
+        <ng-template matStepLabel>เช็คความพร้อมเครื่องจักร</ng-template>
+        <div class="container" style="padding-top:5px; padding-bottom:5px;" fxLayout="row" fxLayoutAlign="center center"
+          fxLayout.xs="column" fxFlexFill>
+          <div fxFlex="90px">
+
+          </div>
+          <div fxFlex="100">
+            <mat-label>เช็คความพร้อมเครื่องจักร</mat-label>
+          </div>
+          <div fxFlex="90px">
+            <button mat-raised-button color="primary" matStepperNext>Next</button>
+          </div>
+        </div>
+
+
+        <mat-card class="mat-card-machine-check-list">
+          <div class="container"  fxLayout="row"
+            fxLayoutAlign="Start" fxLayout.xs="column" fxFlexFill>
+            <div fxFlex="90px"  >
+               <button  mat-raised-button color="primary" (click)="syncSensor()" >
+                 <mat-icon>sync</mat-icon>
+               </button>
+            </div>
+          </div>
+          <app-machine-check-list-item *ngFor="let item of arrobjMCL1" [PlanStatus]="objParams.planStatus"
+            [objMachineCheckList]="item">
+          </app-machine-check-list-item>
+        </mat-card>
+
+
+
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="FormGroup2">
+      <form [formGroup]="FormGroup2">
+        <ng-template matStepLabel>เช็คสภาพการทำงานของ EPC</ng-template>
+        <div class="container" style="padding-top:5px; padding-bottom:5px;" fxLayout="row" fxLayoutAlign="center center"
+          fxLayout.xs="column" fxFlexFill>
+          <div fxFlex="90px">
+            <button mat-raised-button color="accent" matStepperPrevious>Back</button>
+          </div>
+          <div fxFlex="100">
+            <mat-label>เช็คสภาพการทำงานของ EPC</mat-label>
+          </div>
+          <div fxFlex="90px">
+            <button mat-raised-button color="primary" matStepperNext>Next</button>
+          </div>
+        </div>
+        <mat-card class="mat-card-machine-check-list">
+          <app-machine-check-list-item *ngFor="let item of arrobjMCL2" [PlanStatus]="objParams.planStatus"
+            [objMachineCheckList]="item"></app-machine-check-list-item>
+        </mat-card>
+
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="FormGroup3">
+      <form [formGroup]="FormGroup3">
+        <ng-template matStepLabel>เช็คความสะอาดเครื่องจักรก่อนเดินเครื่อง</ng-template>
+        <div class="container" style="padding-top:5px; padding-bottom:5px;" fxLayout="row" fxLayoutAlign="center center"
+          fxLayout.xs="column" fxFlexFill>
+          <div fxFlex="90px">
+            <button mat-raised-button color="accent" matStepperPrevious>Back</button>
+          </div>
+          <div fxFlex="100">
+            <mat-label>เช็คความสะอาดเครื่องจักรก่อนเดินเครื่อง</mat-label>
+          </div>
+          <div fxFlex="90px">
+            <button mat-raised-button color="primary" matStepperNext>Next</button>
+          </div>
+        </div>
+        <mat-card class="mat-card-machine-check-list">
+          <app-machine-check-list-item *ngFor="let item of arrobjMCL3" [PlanStatus]="objParams.planStatus"
+            [objMachineCheckList]="item"></app-machine-check-list-item>
+        </mat-card>
+
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Start Operation</ng-template>
+      <div class="container" style="padding-top:5px; padding-bottom:5px;" fxLayout="row" fxLayoutAlign="center center"
+        fxLayout.xs="column" fxFlexFill>
+        <div fxFlex="90px">
+          <button mat-raised-button color="accent" matStepperPrevious>Back</button>
+        </div>
+        <div fxFlex="100">
+          <mat-label>Start Operation</mat-label>
+        </div>
+        <div fxFlex="90px">
+
+        </div>
+      </div>
+
+      <div class="container" style="padding-bottom:5px;" fxLayout="row" fxLayoutAlign="center center"
+        fxLayout.xs="column" fxFlexFill>
+        <div fxFlex="100">
+          <mat-card class="mat-card-roll-no">
+            <div class="container" style="padding-top: 5px;" fxLayout="row" fxLayoutAlign="center center"
+              fxLayout.xs="column" fxFlexFill>
+              <div fxFlex="5"></div>
+              <div fxFlex="20">
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Roll No." autocomplete="off" (click)="$event.target.select()"
+                    [(ngModel)]="fabricRollNo">
+                </mat-form-field>
+              </div>
+              <div fxFlex="5"></div>
+              <div fxFlex="10">
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="NT Roll No." autocomplete="off" (click)="$event.target.select()"
+                    [(ngModel)]="spindleNo">
+                </mat-form-field>
+              </div>
+              <div fxFlex="5"></div>
+              <div fxFlex="50">
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Remark" autocomplete="off" (click)="$event.target.select()"
+                    [(ngModel)]="remark">
+                </mat-form-field>
+              </div>
+              <div fxFlex="5"></div>
+            </div>
+          </mat-card>
+        </div>
+      </div>
+      <div class="container" style="padding-bottom:5px;" fxLayout="row" fxLayoutAlign="center center"
+        fxLayout.xs="column" fxFlexFill>
+        <div fxFlex="100">
+
+          <mat-card class="mat-card-machine-check-list">
+            <div class="container" style="padding-top: 5px;" fxLayout="row" fxLayoutAlign="center center"
+              fxLayout.xs="column" fxFlexFill>
+              <div fxFlex="15"></div>
+              <div fxFlex="110px">
+                <mat-label>น้ำหนัก (g/m2)</mat-label>
+              </div>
+
+              <div fxFlex="20">
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="ซ้าย" type="number" step="50" autocomplete="off"
+                    (click)="$event.target.select()" (change)="txtWeightChange($event.target.value)"
+                    [(ngModel)]="objStartOperData.leftWeight">
+                </mat-form-field>
+              </div>
+              <div fxFlex="5"></div>
+              <div fxFlex="20">
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="กลาง" type="number" step="50" autocomplete="off"
+                    (click)="$event.target.select()" (change)="txtWeightChange($event.target.value)"
+                    [(ngModel)]="objStartOperData.centerWeight">
+                </mat-form-field>
+              </div>
+              <div fxFlex="5"></div>
+              <div fxFlex="20">
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="ขวา" type="number" step="50" autocomplete="off"
+                    (click)="$event.target.select()" (change)="txtWeightChange($event.target.value)"
+                    [(ngModel)]="objStartOperData.rightWeight">
+                </mat-form-field>
+              </div>
+              <div fxFlex="15"></div>
+            </div>
+
+            <div class="container" style="padding-top: 5px;" fxLayout="row" fxLayoutAlign="center center"
+              fxLayout.xs="column" fxFlexFill>
+              <div fxFlex="15"></div>
+              <div fxFlex="110px">
+                <mat-label>ความหนา (mm)</mat-label>
+              </div>
+
+              <div fxFlex="20">
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="ซ้าย" type="number" step="50" autocomplete="off"
+                    (click)="$event.target.select()" (change)="txtTicknessChange($event.target.value)"
+                    [(ngModel)]="objStartOperData.leftThickness">
+                </mat-form-field>
+              </div>
+              <div fxFlex="5"></div>
+              <div fxFlex="20">
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="กลาง" type="number" step="50" autocomplete="off"
+                    (click)="$event.target.select()" (change)="txtTicknessChange($event.target.value)"
+                    [(ngModel)]="objStartOperData.centerThickness">
+                </mat-form-field>
+              </div>
+              <div fxFlex="5"></div>
+              <div fxFlex="20">
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="ขวา" type="number" step="50" autocomplete="off"
+                    (click)="$event.target.select()" (change)="txtTicknessChange($event.target.value)"
+                    [(ngModel)]="objStartOperData.rightThickness">
+                </mat-form-field>
+              </div>
+              <div fxFlex="15"></div>
+            </div>
+
+          </mat-card>
+        </div>
+      </div>
+
+      <div class="container" style="padding-bottom:5px;" fxLayout="row" fxLayoutAlign="center center"
+        fxLayout.xs="column" fxFlexFill>
+        <div fxFlex="100">
+          <mat-card class="mat-card-width">
+            <div class="container" style="padding-top: 5px; " fxLayout="row" fxLayoutAlign="center center"
+              fxLayout.xs="column" fxFlexFill>
+              <div fxFlex="15">
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="หน้ากว้าง (cm.)" type="number" step="50" autocomplete="off"
+                    (click)="$event.target.select()" (change)="txtWidthChange($event.target.value)"
+                    [(ngModel)]="objStartOperData.fabricWidth">
+                </mat-form-field>
+              </div>
+              <div fxFlex="5"></div>
+              <div fxFlex="15">
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="ความยาว (m.)" type="number" step="50" autocomplete="off"
+                    (click)="$event.target.select()" (change)="txtPlanQtyChange($event.target.value)"
+                    [(ngModel)]="objStartOperData.fabricLength">
+                </mat-form-field>
+              </div>
+              <div fxFlex="5"></div>
+              <div fxFlex="15">
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="องศา" type="number" step="50" autocomplete="off"
+                    (click)="$event.target.select()" (change)="txtFabricSetChange($event.target.value)"
+                    [(ngModel)]="objStartOperData.fabricSet">
+                </mat-form-field>
+              </div>
+              <div fxFlex="5"></div>
+              <div fxFlex="20">
+                <mat-label>แนวรอยพับผ้าดิบเฉียงขึ้นซ้าย</mat-label>
+              </div>
+              <div fxFlex="105px">
+                <!-- <mat-button-toggle-group name="OKNG" aria-label="OK NG">
+                  <mat-button-toggle [ngClass]="{'mat-button-toggle-checkedOK' : 'OK' === 'OK'}" value="OK">OK</mat-button-toggle>
+                  <mat-button-toggle [ngClass]="{'mat-button-toggle-checkedNG' : 'OK' === 'NG'}" value="NG">NG</mat-button-toggle>
+                </mat-button-toggle-group> -->
+
+                <mat-button-toggle-group [(ngModel)]="IsLeftCrease" name="OKNG" aria-label="OK NG">
+                  <mat-button-toggle [ngClass]="{'mat-button-toggle-checkedOK' : IsLeftCrease === 'OK'}" value="OK">OK
+                  </mat-button-toggle>
+                  <mat-button-toggle [ngClass]="{'mat-button-toggle-checkedNG' : IsLeftCrease === 'NG'}" value="NG">NG
+                  </mat-button-toggle>
+                </mat-button-toggle-group>
+
+              </div>
+              <div fxFlex="5"></div>
+              <div fxFlex="20">
+                <mat-label>หัวม้วนผ้าดิบเรียบซ้าย-ขวา</mat-label>
+              </div>
+              <div fxFlex="105px">
+                <!-- <mat-button-toggle-group name="OKNG" aria-label="OK NG">
+                  <mat-button-toggle [ngClass]="{'mat-button-toggle-checkedOK' : 'OK' === 'OK'}" value="OK">OK</mat-button-toggle>
+                  <mat-button-toggle [ngClass]="{'mat-button-toggle-checkedNG' : 'OK' === 'NG'}" value="NG">NG</mat-button-toggle>
+                </mat-button-toggle-group> -->
+
+                <mat-button-toggle-group [(ngModel)]="IsSmoothRoll" name="OKNG" aria-label="OK NG">
+                  <mat-button-toggle [ngClass]="{'mat-button-toggle-checkedOK' : IsSmoothRoll === 'OK'}" value="OK">OK
+                  </mat-button-toggle>
+                  <mat-button-toggle [ngClass]="{'mat-button-toggle-checkedNG' : IsSmoothRoll === 'NG'}" value="NG">NG
+                  </mat-button-toggle>
+                </mat-button-toggle-group>
+
+              </div>
+              <div fxFlex="5"></div>
+            </div>
+          </mat-card>
+        </div>
+      </div>
+
+      <div class="container" style="padding-top: 5px;" fxLayout="row" fxLayoutAlign="center center" fxLayout.xs="column"
+        fxFlexFill>
+        <div fxFlex="110px">
+
+          <div *ngIf="IsSupervisor">
+            <div [ngSwitch]="PageMode">
+              <div *ngSwitchCase="'E'">
+                <button mat-fab color="primary" (click)="btnSaveClick()">Save</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div fxFlex="95">
+
+
+
+        </div>
+        <div fxFlex="125px">
+          <div [ngSwitch]="objParams.planStatus">
+            <div *ngSwitchCase="0">
+              <div *ngIf="IsSupervisor">
+                <button mat-raised-button class="mat-btn-start-operation" (click)="btnStartOperationClick()">Start
+                  Operation</button>
+              </div>
+
+            </div>
+            <div *ngSwitchCase="1">
+              <div *ngIf="IsSupervisor">
+                <button mat-raised-button class="mat-btn-start-operation" (click)="btnFinishTaskClick()">Finish
+                  Task</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>

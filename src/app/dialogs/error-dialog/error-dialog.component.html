@@ -1,0 +1,31 @@
+<div class="mat-dialog-container">
+  <div class="container">
+    <mat-toolbar color="primary">
+      <div [ngSwitch]="data.Messagetype">
+        <mat-icon *ngSwitchCase="'Error'" class="iconsize">info</mat-icon>
+        <mat-icon *ngSwitchCase="'Complete'" class="iconsize">info</mat-icon>
+        <mat-icon *ngSwitchCase="'Validate'" class="iconsize">info</mat-icon>
+      </div>
+      Error {{ data.Messagetitle }}
+    </mat-toolbar>
+    <br />
+    <mat-grid-list cols="12" rowHeight="50px">
+      <mat-grid-tile class="text-inside-grid" colspan="12">
+        <h3 class="textbody" mat-dialog-title>{{ data.Messagebody }}</h3>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+    <mat-grid-list cols="12" rowHeight="50px">
+      <mat-grid-tile colspan="12">
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="OKClick()"
+          [mat-dialog-close]="true"
+        >
+          OK
+        </button>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+
+  .mat-dialog-container.mat-dialog-container {
+    padding: 24px !important;
+  }
+
+  .table-container {
+    padding: 5px 15px 15px 15px;
+  }
+  
+  .example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+
+  .example-full-width {
+    width: 100%;
+  }
+
+  // .mat-row:hover {
+  //   background-color:#ffe0cc;
+  // }
+
+  .mat-header-cell {
+    display: flex;
+    justify-content: center;
+  }
+
+  .mat-column-actions {
+    flex: 0 0 85px;
+    align-content: center;
+  }
+
+  .mat-row:nth-child(even) {
+    background-color: #e9e5e5;
+    height: 10px;
+    color: white;
+  }
+

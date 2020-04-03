@@ -1,0 +1,52 @@
+
+<div class="container">
+  <form class="mat-dialog-content"  #formControl="ngForm">
+    <h3 mat-dialog-title>{{strDialogStatus}}</h3>
+    <div class="form">
+      <mat-form-field color="accent">
+        <mat-select required placeholder="Process" [value]="intProcessID"
+        (change)="ddlProcess_SelectIndexChange($event.value)"  name="Process">
+          <mat-option *ngFor="let objProcess of arrobjProcess" [value]="objProcess.id">
+            {{objProcess.processName}}
+          </mat-option>
+        </mat-select>
+        <!-- <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error> -->
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+      <mat-form-field color="accent">
+        <mat-select required placeholder="Raw Material" [(ngModel)]="dataOperationInstruction.rawmaterialName" name="RawMaterial">
+          <mat-option *ngFor="let objRawMaterial of arrobjRawMaterial" [value]="objRawMaterial">
+            {{objRawMaterial}}
+          </mat-option>
+        </mat-select>
+        <!-- <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error> -->
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+      <mat-form-field color="accent">
+        <mat-select required placeholder="Product" [value]="intProductID" 
+        (change)="ddlProduct_SelectIndexChange($event.value)"  name="Product">
+          <mat-option *ngFor="let objProduct of arrobjProduct" [value]="objProduct.id">
+            {{objProduct.productName}}
+          </mat-option>
+        </mat-select>
+        <!-- <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error> -->
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+      <mat-form-field >
+        <input matInput #input class="form-control" placeholder="Standard"  [(ngModel)]="dataOperationInstruction.process.defaultStandard" name="Standard"  >
+      </mat-form-field>
+    </div>
+  </form>
+  
+    <div mat-dialog-actions>
+      <button mat-raised-button color="primary" [type]="submit" [disabled]="!formControl.valid" [mat-dialog-close]="dataOperationInstruction" (click)="confirmAdd()">OK</button>
+      <button mat-raised-button (click)="onNoClick()" tabindex="-1">Cancel</button>
+    </div>
+ 
+</div>

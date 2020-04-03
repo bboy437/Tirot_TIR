@@ -1,0 +1,31 @@
+<mat-sidenav-container class="container" fullscreen>
+
+
+    <mat-sidenav-content style="z-index: unset;overflow: hidden;">
+        <mat-drawer-container fullscreen>
+
+            <mat-drawer-content style="overflow: hidden;">
+
+                <!-- <cdk-toolbar [sidenav]="sidenav" [drawer]="drawer" [matDrawerShow]="matDrawerShow" style="z-index: 500"></cdk-toolbar> -->
+                <cdk-toolbar [sidenav]="sidenav" [drawer]="drawer" [matDrawerShow]="matDrawerShow" style="z-index: 500"></cdk-toolbar>
+
+                <div class="spinner-loading-shade" *ngIf="showLoader">
+                    <mat-spinner *ngIf="showLoader"></mat-spinner>
+                </div>
+                <perfect-scrollbar style="height: calc(100% - 25px);">
+                    <div style="height: 100%;">
+
+                        <router-outlet #route="outlet"></router-outlet>
+                    </div>
+
+                </perfect-scrollbar>
+            </mat-drawer-content>
+        </mat-drawer-container>
+    </mat-sidenav-content>
+
+    <!-- <mat-sidenav #sidenav2 position="end" mode="over">
+    
+    <cdk-sidebar></cdk-sidebar>
+    </mat-sidenav> -->
+
+</mat-sidenav-container>

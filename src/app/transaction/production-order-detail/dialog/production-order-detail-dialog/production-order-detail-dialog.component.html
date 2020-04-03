@@ -1,0 +1,39 @@
+
+
+<div class="container">
+
+  <h3 mat-dialog-title>{{strDialogStatus}}</h3>
+
+<form class="mat-dialog-content"  #formControl="ngForm">
+
+  <div class="form">
+    <mat-form-field >
+        <input matInput  class="form-control" type="number" [(ngModel)]="dataOrderItem.itemNo"  placeholder="Item No."  name="intitemNo"   >
+    </mat-form-field>
+  </div>
+
+  <div class="form">
+    <mat-form-field color="accent">
+      <mat-select required placeholder="Product" [value]="intOldProductID"
+      (change)="ddlProduct_SelectIndexChange($event.value)"  name="Product">
+        <mat-option *ngFor="let objProduct of arrobjProduct" [value]="objProduct.id">
+          {{objProduct.productName}}
+        </mat-option>
+      </mat-select>
+      <!-- <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error> -->
+    </mat-form-field>
+  </div>
+  <div class="form">
+    <mat-form-field >
+      <input matInput class="form-control" placeholder="Order Length (m)" type="number" [(ngModel)]="dataOrderItem.orderQty"  name="OrderQty">
+    </mat-form-field>
+  </div>
+</form>
+
+  <div mat-dialog-actions>
+    <button mat-raised-button color="primary" [type]="submit" [disabled]="!formControl.valid" [mat-dialog-close]="dataOrderItem" (click)="confirmAdd()">OK</button>
+    <button mat-raised-button (click)="onNoClick()" tabindex="-1">Cancel</button>
+  </div>
+  
+
+</div>

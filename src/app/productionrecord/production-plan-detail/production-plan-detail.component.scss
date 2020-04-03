@@ -1,0 +1,55 @@
+.mat-card-roll-no {
+    background: rgb(183, 245, 221);
+    padding : 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+}
+
+.mat-btn-menu {
+    width: 250px;
+    height: 150px;
+    color: white;
+    font-size: 20px;
+    background-color: rgba(0, 0, 0, 0.12);
+}
+
+
+.mat-btn-menu-inline-inspect{
+    width: 250px;
+    height: 150px;
+    color: white;
+    font-size: 20px;
+    background-color: rgb(102, 187, 106);
+}
+
+.mat-btn-menu-standard-inspect{
+    width: 250px;
+    height: 150px;
+    color: white;
+    font-size: 20px;
+    background-color: rgb(38, 166, 154);
+}
+
+.mat-btn-menu-mixed-solution{
+    width: 250px;
+    height: 150px;
+    color: white;
+    font-size: 20px;
+    background-color: rgb(66, 165, 245);
+}
+
+.mat-btn-close {
+    min-width: 100%;
+}
+
+.table-container {
+    padding: 5px 15px 15px 15px;
+  }
+
+  .table-component-holder {
+    border: 1px solid #5c6bc000 !important;
+    background-color: white ;
+    border-radius: 10px !important;
+
+  }

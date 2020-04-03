@@ -1,0 +1,108 @@
+<div [ngSwitch]="objMachineCheckList.noColumnInLine">
+  <div *ngSwitchCase="1">
+    <div style="padding-top: 3px" class="container" fxLayout="row" fxLayoutAlign="center center" fxLayout.xs="column"
+      fxFlexFill>
+      <div fxFlex="15px"></div>
+      <div fxFlex="100">
+        <mat-label>{{objMachineCheckList.captionCol1}}</mat-label>
+      </div>
+
+      <div (keydown.enter)="$event.preventDefault()" *ngIf="objMachineCheckList.dataTypeCol1 == 0 || objMachineCheckList.dataTypeCol1 == 1" fxFlex="250px">
+        <mat-form-field style=" margin-bottom: -1.25em" class="example-full-width">
+          <input matInput placeholder="" type="number" class="inputright" autocomplete="off"
+            (click)="$event.target.select()" (ngModelChange)="keyPressCol1($event)"
+            [(ngModel)]="objMachineCheckList.col1Value">
+        </mat-form-field>
+      </div>
+
+      <!-- <div *ngIf="objMachineCheckList.dataTypeCol1 == 0 || objMachineCheckList.dataTypeCol1 == 1" fxFlex="50px">
+        <mat-label>bar.</mat-label>
+      </div> -->
+
+      <div (keydown.enter)="$event.preventDefault()" *ngIf="objMachineCheckList.dataTypeCol1 == 0 || objMachineCheckList.dataTypeCol1 == 2" fxFlex="105px">
+        <mat-button-toggle-group style="background-color: white" [disabled]="btnOKNG_Disabled"
+          [(ngModel)]="objMachineCheckList.col1OkNg" name="OKNG" aria-label="OK NG">
+          <mat-button-toggle
+            [ngClass]="{'mat-button-toggle-checkedOK' : objMachineCheckList.col1OkNg === 'OK' || objMachineCheckList.col1OkNg === true }"
+            value="OK">OK</mat-button-toggle>
+          <mat-button-toggle
+            [ngClass]="{'mat-button-toggle-checkedNG' : objMachineCheckList.col1OkNg === 'NG' || objMachineCheckList.col1OkNg === false }"
+            value="NG">NG</mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+
+
+      <div fxFlex="15px"></div>
+    </div>
+  </div>
+  <div *ngSwitchCase="2">
+    <div style="padding-top: 3px" class="container" fxLayout="row" fxLayoutAlign="center center" fxLayout.xs="column"
+      fxFlexFill>
+      <div fxFlex="15px"></div>
+      <div fxFlex="50">
+        <mat-label>{{objMachineCheckList.captionCol1}}</mat-label>
+      </div>
+
+      <div (keydown.enter)="$event.preventDefault()" fxLayoutAlign="center center"
+        *ngIf="objMachineCheckList.dataTypeCol1 == 0 || objMachineCheckList.dataTypeCol1 == 1" fxFlex="180px">
+        <mat-form-field style=" margin-bottom: -1.25em" class="example-full-width">
+          <input matInput placeholder="" type="number" class="inputright" autocomplete="off"
+            (click)="$event.target.select()" (ngModelChange)="keyPressCol1($event)"
+            [(ngModel)]="objMachineCheckList.col1Value">
+        </mat-form-field>
+      </div>
+
+      <!-- <div *ngIf="objMachineCheckList.dataTypeCol1 == 0 || objMachineCheckList.dataTypeCol1 == 1" fxFlex="50px">
+          <mat-label>bar.</mat-label>
+        </div> -->
+
+      <div (keydown.enter)="$event.preventDefault()" *ngIf="objMachineCheckList.dataTypeCol1 == 0 || objMachineCheckList.dataTypeCol1 == 2" fxFlex="105px">
+        <mat-button-toggle-group style="background-color: white" [disabled]="btnOKNG_Disabled"
+          [(ngModel)]="objMachineCheckList.col1OkNg" name="OKNG" aria-label="OK NG">
+          <mat-button-toggle
+            [ngClass]="{'mat-button-toggle-checkedOK' : objMachineCheckList.col1OkNg === 'OK' || objMachineCheckList.col1OkNg === true}"
+            value="OK">OK</mat-button-toggle>
+          <mat-button-toggle
+            [ngClass]="{'mat-button-toggle-checkedNG' : objMachineCheckList.col1OkNg === 'NG' || objMachineCheckList.col1OkNg === false}"
+            value="NG">NG</mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+
+
+      <div fxFlex="15px"></div>
+
+      <div fxFlex="15px"></div>
+      <div fxFlex="50">
+        <mat-label>{{objMachineCheckList.captionCol1}}</mat-label>
+      </div>
+
+      <div (keydown.enter)="$event.preventDefault()" *ngIf="objMachineCheckList.dataTypeCol1 == 0 || objMachineCheckList.dataTypeCol1 == 1" fxFlex="180px">
+        <mat-form-field style=" margin-bottom: -1.25em" class="example-full-width">
+          <input matInput placeholder="" type="number" class="inputright" autocomplete="off"
+            (click)="$event.target.select()" (ngModelChange)="keyPressCol2($event)"
+            [(ngModel)]="objMachineCheckList.col2Value">
+        </mat-form-field>
+      </div>
+
+      <!-- <div *ngIf="objMachineCheckList.dataTypeCol1 == 0 || objMachineCheckList.dataTypeCol1 == 1" fxFlex="50px">
+          <mat-label>bar.</mat-label>
+        </div> -->
+
+      <div (keydown.enter)="$event.preventDefault()" *ngIf="objMachineCheckList.dataTypeCol2 == 0 || objMachineCheckList.dataTypeCol2 == 2" fxFlex="105px">
+        <mat-button-toggle-group style="background-color: white" [disabled]="btnOKNG_Disabled"
+          [(ngModel)]="objMachineCheckList.col2OkNg" name="OKNG" aria-label="OK NG">
+          <mat-button-toggle
+            [ngClass]="{'mat-button-toggle-checkedOK' : objMachineCheckList.col2OkNg === 'OK' || objMachineCheckList.col2OkNg === true }"
+            value="OK">OK</mat-button-toggle>
+          <mat-button-toggle
+            [ngClass]="{'mat-button-toggle-checkedNG' : objMachineCheckList.col2OkNg === 'NG' || objMachineCheckList.col2OkNg === false }"
+            value="NG">NG</mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+
+
+      <div fxFlex="15px"></div>
+    </div>
+
+  </div>
+</div>

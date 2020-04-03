@@ -1,0 +1,46 @@
+
+.mat-header-row{
+  background-color: #9cb5e4;
+}
+// .mat-row:nth-child(even){
+//     background-color: #e9e5e5;
+//     height: 10px;
+//     color: white;
+// }
+.mat-row:hover {
+    background-color:#faf9c8d3;
+}
+
+.spinner-loading-shade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 56px;
+    right: 0;
+    background: rgba(0, 0, 0, 0.15);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mixedOut {
+    background-color: #f8c4af;
+  }
+  // .row-mixedOut {
+  //   background-color: #f8e1af;
+  // }
+
+  // .mat-row:nth-child(even) {
+  //   background-color: #e9e5e5;
+  //   color: white;
+  // }
+//   .white-icon {
+//     color: rgb(35, 15, 146);
+//     // background-color: white;
+
+// }
+/* Note: If you're using an SVG icon, you should make the class target the `<svg>` element */
+.button-icon {
+  background-color: white
+}

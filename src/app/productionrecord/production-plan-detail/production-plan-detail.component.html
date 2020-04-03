@@ -1,0 +1,111 @@
+<div fxLayout="column" class="components-container-gt-xs" fxLayoutGap="5px">
+
+  <div fxFlex class="mat-elevation-z4" style="padding: 10px; background-color: rgb(198, 195, 240);">
+    <div class="container" fxLayout="row" fxLayout.xs="column" fxFlexFill>
+      <div fxFlex="100">
+        <app-production-record-header [ProductionPlanID]="objParams.productionPlanID" [IsStart]="true"  ></app-production-record-header>
+      </div>
+      <div fxFlex="15px"></div>
+      <div fxFlex="90px">
+        <button mat-raised-button style="line-height: 46px;" color="accent" (click)="btnCloseClick()">
+          <!-- <mat-icon>close</mat-icon> -->
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container" style="padding-top: 30px;" fxLayout="row" fxLayoutAlign="center center" fxLayout.xs="column"
+    fxFlexFill>
+    <div fxFlex="30"></div>
+    <div fxFlex="250px">
+      <button mat-button (click)="btnMachineCheckListClick()" class="mat-btn-menu" style="background-color: rgb(92, 107, 192)">
+        <table style="width: 100%;padding: 0px">
+          <tr>
+            <td>
+              <mat-icon style="font-size: 35px;">playlist_add_check</mat-icon>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Machine Check List
+            </td>
+          </tr>
+        </table>
+      </button>
+    </div>
+    <div fxFlex="30"></div>
+    <div fxFlex="250px">
+      <button mat-button [disabled]="isDisabled" (click)="btnMixedSolutionClick()" [ngClass]="{'mat-btn-menu-mixed-solution' : !isDisabled , 'mat-btn-menu' : isDisabled }">
+        <table style="width: 100%;padding: 0px">
+          <tr>
+            <td>
+              <mat-icon style="font-size: 35px;">local_drink</mat-icon>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Mixed Solution
+            </td>
+          </tr>
+        </table>
+      </button>
+    </div>
+    <div fxFlex="30"></div>
+  </div>
+
+  <div class="container" style="padding-top: 60px;" fxLayout="row" fxLayoutAlign="center center" fxLayout.xs="column"
+    fxFlexFill>
+    <div fxFlex="30"></div>
+    <div fxFlex="250px">
+      <button mat-button [disabled]="isDisabled" (click)="btnStandardIspectClick()" [ngClass]="{'mat-btn-menu-standard-inspect' : !isDisabled , 'mat-btn-menu' : isDisabled }">
+        <table style="width: 100%;padding: 0px">
+          <tr>
+            <td>
+              <mat-icon style="font-size: 35px;">check</mat-icon>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Standard Inspect
+            </td>
+          </tr>
+        </table>
+      </button>
+    </div>
+    <div fxFlex="30"></div>
+    <div fxFlex="250px">
+      <button mat-button [disabled]="isDisabled" (click)="btnInlineIspectClick()" [ngClass]="{'mat-btn-menu-inline-inspect' : !isDisabled , 'mat-btn-menu' : isDisabled }">
+        <table style="width: 100%;padding: 0px">
+          <tr>
+            <td>
+              <mat-icon style="font-size: 35px;">thumb_up</mat-icon>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Inline Inspect
+            </td>
+          </tr>
+        </table>
+      </button>
+    </div>
+    <div fxFlex="30"></div>
+  </div>
+
+
+
+  <!-- 
+      <div class="container" style="padding-top: 90px;" fxLayout="row" fxLayoutAlign="center center" fxLayout.xs="column"
+        fxFlexFill>
+        <div fxFlex="40"></div>
+        <div fxFlex="20">
+          <button mat-raised-button color="accent"  (click)="btnCloseClick()" class="mat-btn-close">
+              <mat-icon >close</mat-icon>
+              Close</button>
+        </div>
+        <div fxFlex="40"></div>
+      </div> -->
+
+</div>

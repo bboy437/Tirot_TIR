@@ -1,0 +1,291 @@
+<!-- <div class="spinner-loading-shade" *ngIf="isLoadingResults">
+  <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+</div> -->
+<div fxLayout="column" class="components-container-gt-xs" fxLayoutGap="5px">
+  <div fxFlex class="mat-elevation-z4" style="padding: 10px; background-color: rgb(198, 195, 240);">
+    <div class="container" fxLayout="row" fxLayout.xs="column" fxFlexFill>
+      <div fxFlex="100">
+        <app-production-record-header [ProductionPlanID]="objParams.productionPlanID" [IsStart]="false" [PlanStatus]="objParams.planStatus">
+        </app-production-record-header>
+      </div>
+      <div fxFlex="15px"></div>
+      <div fxFlex="90px">
+        <button mat-raised-button style="line-height: 46px;" color="accent" (click)="btnCloseClick()">
+          <!-- <mat-icon>close</mat-icon> -->
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div fxFlex class="mat-elevation-z4" style="padding: 5px; background-color: rgb(202, 240, 195);">
+    <div class="container" fxLayout="row" fxLayout.xs="column" fxFlexFill>
+      <div fxFlex="100">
+        <app-roll-description [ProductionPlanID]="objParams.productionPlanID" [LotNo]="objParams.lotNo" [PlanStatus]="objParams.planStatus">
+        </app-roll-description>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="container" style="padding-top:5px; padding-bottom:5px;" fxLayout="row" fxLayoutAlign="center center"
+    fxLayout.xs="column" fxFlexFill>
+    <div fxFlex="90px">
+      <button mat-raised-button color="accent" (click)="btnCloseClick()" class="mat-btn-close">
+        <mat-icon>close</mat-icon>
+        Close
+      </button>
+    </div>
+    <div fxFlex="100"></div>
+  </div> -->
+
+  <div fxFlex class="mat-elevation-z4" style="padding: 10px; background-color: rgb(253, 172, 125);">
+    <mat-card-title class="card-container-right">หัวม้วน</mat-card-title>
+
+    <mat-card class="rowmatcardone" style="margin-top: 15px">
+      <div class="container" fxLayout="row" fxLayout.xs="column" fxFlexFill>
+        <div fxFlex="10"></div>
+        <div class="div-lable" fxFlex="15">
+          <mat-label>น้ำหนัก (g/m2)</mat-label>
+        </div>
+        <div fxFlex="20">
+          <mat-form-field class="example-full-width">
+            <input matInput type="number" step="50" placeholder="ซ้าย" 
+            (click)="$event.target.select()"
+             [(ngModel)]="objRow.frontLeftWeight"
+              [ngModelOptions]="{standalone: true}" autocomplete="off" (change)="txtInWeightChange($event.target.value)">
+          </mat-form-field>
+        </div>
+        <div fxFlex="5"></div>
+        <div fxFlex="20">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="กลาง"  (click)="$event.target.select()"
+            type="number" step="50" autocomplete="off" (change)="txtInWeightChange($event.target.value)"
+              [(ngModel)]="objRow.frontCenterWeight" [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
+        </div>
+        <div fxFlex="5"></div>
+        <div fxFlex="20">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="ขวา"  (click)="$event.target.select()"
+            type="number" step="50" autocomplete="off" (change)="txtInWeightChange($event.target.value)"
+            [(ngModel)]="objRow.frontRightWeight" [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="container" fxLayout="row" fxLayout.xs="column" fxFlexFill>
+        <div fxFlex="10"></div>
+        <div class="div-lable" fxFlex="15">
+          <mat-label>ความหนา (mm)</mat-label>
+        </div>
+        <div fxFlex="20">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="ซ้าย" (click)="$event.target.select()"
+            type="number" step="50" autocomplete="off" (change)="txtInTicknessChange($event.target.value)"
+            [(ngModel)]="objRow.frontLeftThickness" [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
+        </div>
+        <div fxFlex="5"></div>
+        <div fxFlex="20">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="กลาง" (click)="$event.target.select()"
+            type="number" step="50" autocomplete="off" (change)="txtInTicknessChange($event.target.value)"
+             [(ngModel)]="objRow.frontCenterThickness" [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
+        </div>
+        <div fxFlex="5"></div>
+        <div fxFlex="20">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="ขวา"  (click)="$event.target.select()"
+            type="number" step="50" autocomplete="off" (change)="txtInTicknessChange($event.target.value)"
+            [(ngModel)]="objRow.frontRightThickness" [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
+        </div>
+      </div>
+
+    </mat-card>
+    <mat-card class="rowmatcardone" style="margin-top: 5px">
+      <div class="container" fxLayout="row" fxLayout.xs="column" fxFlexFill>
+        
+        <div  fxFlex="20">
+          <!-- <mat-label>องศา</mat-label> -->
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="องศา"  (click)="$event.target.select()"
+            type="number" step="50" autocomplete="off" (change)="txtFabricSetChange($event.target.value)"
+            [(ngModel)]="objRow.frontFabricSet" [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
+        </div>
+        <div fxFlex="5"></div>
+        <div fxFlex="20">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="หน้ากว้าง (cm)"  (click)="$event.target.select()"
+            type="number" step="50" autocomplete="off" (change)="txtInWidthChange($event.target.value)"
+            [(ngModel)]="objRow.frontFabricWidth" [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
+        </div>
+        <div fxFlex="5"></div>
+        <div fxFlex="20">
+          <!-- <input matInput placeholder="ความยาวผ้า (m)"> -->
+          <!-- แนวรอยพับผ้าดิบเฉียงขึ้นซ้าย <br><br> -->
+          <div class="output-size" style="margin-top: 5px">
+            <!-- <mat-button-toggle-group>
+              <mat-button-toggle value="bold">OK</mat-button-toggle>
+              <mat-button-toggle value="italic">NG</mat-button-toggle>
+            </mat-button-toggle-group> -->
+            <table width=100% cellpadding=0 cellspacing=0>
+              <tr>
+                <td>
+                  <mat-label>แนวรอยพับผ้าดิบเฉียงขึ้นซ้าย</mat-label>
+                </td>
+                <td>
+
+                  <mat-button-toggle-group [(ngModel)]="frontIsLeftCrease" name="OKNG" aria-label="OK NG">
+                    <mat-button-toggle [ngClass]="{'mat-button-toggle-checkedOK' : frontIsLeftCrease === 'OK'}" value="OK">OK</mat-button-toggle>
+                    <mat-button-toggle [ngClass]="{'mat-button-toggle-checkedNG' : frontIsLeftCrease === 'NG'}" value="NG">NG</mat-button-toggle>
+                  </mat-button-toggle-group>
+                </td>
+              </tr>
+            </table>
+
+
+          </div>
+
+        </div>
+        <div fxFlex="5"></div>
+        <div fxFlex="20">
+          <!-- แนวรอยพับผ้าดิบเฉียงขึ้นซ้าย <br><br> -->
+          <div style="margin-top: 5px">
+            <!-- <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+              <mat-button-toggle value="bold">OK</mat-button-toggle>
+              <mat-button-toggle value="italic">NG</mat-button-toggle>
+            </mat-button-toggle-group> -->
+            <table width=100% cellpadding=0 cellspacing=0>
+              <tr>
+                <td>
+                  <mat-label>หัวม้วนผ้าดิบเรียบซ้าย-ขวา</mat-label>
+                </td>
+                <td>
+                  <mat-button-toggle-group [(ngModel)]="frontIsSmoothRoll" name="OKNG" aria-label="OK NG">
+                    <mat-button-toggle [ngClass]="{'mat-button-toggle-checkedOK' : frontIsSmoothRoll === 'OK'}" value="OK">OK</mat-button-toggle>
+                    <mat-button-toggle [ngClass]="{'mat-button-toggle-checkedNG' : frontIsSmoothRoll === 'NG'}" value="NG">NG</mat-button-toggle>
+                  </mat-button-toggle-group>
+                </td>
+              </tr>
+            </table>
+
+
+          </div>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+
+  <div fxFlex class="mat-elevation-z4" style="padding: 10px; background-color: rgb(102, 187, 106);">
+    <mat-card-header>
+      <mat-card-title class="card-container-right"> ท้ายม้วน</mat-card-title>
+    </mat-card-header>
+    <mat-card class="rowmatcardtwo" style="margin-top: 15px">
+      <div class="container" fxLayout="row" fxLayout.xs="column" fxFlexFill>
+        <div fxFlex="10"></div>
+        <div class="div-lable" fxFlex="15">
+          <mat-label>น้ำหนัก (g/m2)</mat-label>
+        </div>
+        <div fxFlex="20">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="ซ้าย" (click)="$event.target.select()"
+            type="number" step="50" autocomplete="off" (change)="txtOutWeightChange($event.target.value)"
+            [(ngModel)]="objRow.rearLeftWeight" [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
+        </div>
+        <div fxFlex="5"></div>
+        <div fxFlex="20">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="กลาง" (click)="$event.target.select()"
+            type="number" step="50" autocomplete="off" (change)="txtOutWeightChange($event.target.value)"
+            [(ngModel)]="objRow.rearCenterWeight" [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
+        </div>
+        <div fxFlex="5"></div>
+        <div fxFlex="20">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="ขวา" (click)="$event.target.select()"
+            type="number" step="50" autocomplete="off" (change)="txtOutWeightChange($event.target.value)"
+            [(ngModel)]="objRow.rearRightWeight" [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="container" fxLayout="row" fxLayout.xs="column" fxFlexFill>
+        <div fxFlex="10"></div>
+        <div class="div-lable" fxFlex="15">
+          <mat-label>ความหนา (mm)</mat-label>
+        </div>
+        <div fxFlex="20">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="ซ้าย" (click)="$event.target.select()"
+            type="number" step="50" autocomplete="off" (change)="txtOutTicknessMinChange($event.target.value)"
+            [(ngModel)]="objRow.rearLeftThickness" [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
+        </div>
+        <div fxFlex="5"></div>
+        <div fxFlex="20">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="กลาง" (click)="$event.target.select()"
+            type="number" step="50" autocomplete="off" (change)="txtOutTicknessMinChange($event.target.value)"
+            [(ngModel)]="objRow.rearCenterThickness" [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
+        </div>
+        <div fxFlex="5"></div>
+        <div fxFlex="20">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="ขวา" (click)="$event.target.select()"
+            type="number" step="50" autocomplete="off" (change)="txtOutTicknessMinChange($event.target.value)"
+            [(ngModel)]="objRow.rearRightThickness" [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
+        </div>
+      </div>
+
+    </mat-card>
+    <mat-card class="rowmatcardtwo" style="margin-top: 2px">
+      <div class="container" fxLayout="row" fxLayout.xs="column" fxFlexFill>
+        <div  fxFlex="20">
+          <!-- <mat-label>องศา</mat-label> -->
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="องศา"  (click)="$event.target.select()"
+            type="number" step="50" autocomplete="off" (change)="txtFabricSetChange($event.target.value)"
+            [(ngModel)]="objRow.rearFabricSet" [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
+        </div>
+        <div fxFlex="5"></div>
+        <div fxFlex="20">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="หน้ากว้าง (cm)" (click)="$event.target.select()"
+            type="number" step="50" autocomplete="off" (change)="txtOutWidthChange($event.target.value)"
+            [(ngModel)]="objRow.rearFabricWidth" [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
+        </div>
+        <div fxFlex="5"></div>
+        <div fxFlex="20">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="ความยาวผ้า (m)" (click)="$event.target.select()"
+            type="number" step="50" autocomplete="off" (change)="txtPlanQtyChange($event.target.value)"
+            [(ngModel)]="objRow.rearFabricLength" [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
+        </div>
+        <div fxFlex="5"></div>
+        <div fxFlex="20">
+          <!-- <mat-form-field class="example-full-width">
+          <input matInput placeholder="หัวม้วนผ้าดิบเรียบซ้าย-ขวา">
+        </mat-form-field> -->
+        </div>
+      </div>
+    </mat-card><br>
+  </div>
+
+  <div class="container" fxLayout="row" fxLayoutAlign="center center" fxLayout.xs="column" fxFlexFill>
+    <div *ngIf="btnSaveEnable">
+      <button mat-fab color="primary" (click)="btnSaveClick()">Save</button>
+    </div>
+  </div>
+
+</div>

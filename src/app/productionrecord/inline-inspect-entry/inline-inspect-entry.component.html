@@ -1,0 +1,131 @@
+<div fxLayout="column" class="components-container-gt-xs" fxLayoutGap="5px">
+  <div fxFlex class="mat-elevation-z4" style="padding: 5px; background-color: rgb(198, 195, 240);">
+    <div class="container" fxLayout="row" fxLayout.xs="column" fxFlexFill>
+      <div fxFlex="100">
+        <app-production-record-header [ProductionPlanID]="objParams.productionPlanID" [IsStart]="false" [PlanStatus]="objParams.planStatus">
+        </app-production-record-header>
+      </div>
+      <div fxFlex="15px"></div>
+      <div fxFlex="90px">
+        <button mat-raised-button style="line-height: 46px;" color="accent" (click)="btnCloseClick()">
+          <!-- <mat-icon>close</mat-icon> -->
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+  <div fxFlex class="mat-elevation-z4" style="padding: 5px; background-color: rgb(202, 240, 195);">
+    <div class="container" fxLayout="row" fxLayout.xs="column" fxFlexFill>
+      <div fxFlex="100">
+        <app-roll-description [ProductionPlanID]="objParams.productionPlanID" [LotNo]="objParams.lotNo" [PlanStatus]="objParams.planStatus">
+        </app-roll-description>
+      </div>
+      <div *ngIf="Editable" style="background-color: black" fxFlex="100px">
+        
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="length" class="inputright" (keypress)="keydecimal($event)" [(ngModel)]="length" >
+          </mat-form-field>
+        
+      </div>
+
+    </div>
+  </div>
+
+  <div class="container" fxLayout="row" fxLayout.xs="column" fxFlexFill>
+    <div fxFlex="35">
+      <!-- List -->
+      <table width="100%">
+        <tr style="height: 3px;">
+          <td></td>
+        </tr>
+        <tr>
+          <td>
+            <mat-button-toggle-group [disabled]="!Editable" [(ngModel)]="defectPosition" class="example-full-width"
+              aria-label="Font Style">
+              <mat-button-toggle fxFlex fxLayoutAlign="center center" value="L">Left</mat-button-toggle>
+              <mat-button-toggle fxFlex fxLayoutAlign="center center" value="C">Center</mat-button-toggle>
+              <mat-button-toggle fxFlex fxLayoutAlign="center center" value="R">Right</mat-button-toggle>
+            </mat-button-toggle-group>
+          </td>
+        </tr>
+        <tr style="height: 3px;">
+          <td></td>
+        </tr>
+      </table>
+
+
+
+      <mat-table [dataSource]="dataSource" matSortActive="defectAtLength" matSortDirection="desc" matSortDisableClear
+        matSort>
+        <!-- <ng-container matColumnDef="rowNo">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>No</mat-header-cell>
+          <mat-cell *matCellDef="let defect"> {{defect.rowNo}} </mat-cell>
+        </ng-container> -->
+        <!-- <ng-container matColumnDef="index">
+            <mat-header-cell *matHeaderCellDef>No.</mat-header-cell>
+            <mat-cell *matCellDef="let element; let i = index - length;">{{ i + 1 }}</mat-cell>
+          </ng-container> -->
+
+        <ng-container matColumnDef="defectAtLength">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Length</mat-header-cell>
+          <mat-cell *matCellDef="let defect">{{ defect.defect.defectType == 'L' ? defect.defectAtLength + ' - ' +
+            defect.defactToLength : defect.defectAtLength }}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="defect.defectName">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Defect</mat-header-cell>
+          <mat-cell *matCellDef="let defect"> {{defect.defect.defectName}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="defectPosition">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Position</mat-header-cell>
+          <mat-cell *matCellDef="let defect">{{defect.defectPosition == 'C' ? 'Center' :
+            defect.defectPosition == 'L' ? 'Left' :
+            defect.defectPosition == 'R' ? 'Right' : defect.defectPosition }}</mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="rowClicked(row)"></mat-row>
+        
+      </mat-table>
+
+      <mat-paginator [length]="5" [pageSize]="5">
+  
+      </mat-paginator>
+      <div *ngIf="showBtnFinishJob">
+        <button mat-raised-button style="line-height: 46px;width: 100%;" class="mat-btn-finish-operation" (click)="btnFinishTaskClick()">
+          Finish Task
+        </button>
+      </div>
+
+
+      <!-- <div class="container" fxLayout="row" style="padding-top: 5px;" fxLayout.xs="column" fxFlexFill>
+        <div fxFlex="100">
+          <button mat-raised-button style="line-height: 46px;width: 100%;background-color:rgb(118, 219, 118);color: white;"
+            (click)="btnCloseClick()">
+            Finish Task
+          </button>
+        </div>
+      </div> -->
+    </div>
+    <div fxFlex="5px"></div>
+    <div fxFlex="65">
+      <div>
+        <!-- Defect button -->
+        <div fxFlex class="mat-elevation-z4" style="padding: 10px; background-color: rgb(208, 240, 195);">
+          <div class="container" fxLayout="row" fxLayoutWrap fxLayoutAlign="start stretch" fxLayoutGap="15px"
+            fxLayout.xs="column" fxFlexFill>
+
+            <div *ngFor="let objDefect of objarrDefect;">
+              <div style="padding-bottom: 15px;">
+                <app-defect-button (isSaveComplete)="onSave($event)" [defectPosition]="defectPosition" [objDefect]="objDefect"
+                  [productionRecordId]="ProductionRecordID" [workerId]="1" [Editable]="Editable" [Length]="length"></app-defect-button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+</div>

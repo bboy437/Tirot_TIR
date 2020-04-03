@@ -1,0 +1,81 @@
+<div class="container">
+
+  <h3 mat-dialog-title>{{strDialogStatus}}</h3>
+
+  <div class="spinner-loading-shade" *ngIf="isLoadingResults">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+  </div>
+
+  <mat-grid-list cols="12" rowHeight="70px">
+    <mat-grid-tile colspan="3">
+      <mat-form-field>
+        <input matInput readonly="true" placeholder="Product" [(ngModel)]="dataProductionOrder.productName">
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile colspan="3">
+      <mat-form-field>
+        <input matInput readonly="true" placeholder="Total Order (m)" 
+        [ngModel]="dataProductionOrder.orderQty | number:0">
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile colspan="3">
+      <mat-form-field>
+        <input matInput readonly="true" placeholder="Total Finish Goods (m)" 
+        [ngModel]="dataProductionOrder.fgQty | number:0" >
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile colspan="3">
+      <mat-form-field>
+        <input matInput readonly="true" placeholder="Total Delivery (m)" 
+        [ngModel]="dataProductionOrder.deliveryQty | number:0" >
+      </mat-form-field>
+    </mat-grid-tile>
+
+  </mat-grid-list>
+  <form class="mat-dialog-content" #formControl="ngForm">
+
+    <mat-table [dataSource]="dataSource" matSortActive="deliveryDate" matSortDirection="asc" matSortDisableClear matSort>
+      <ng-container matColumnDef="deliveryDate">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Delivery Date</mat-header-cell>
+        <mat-cell *matCellDef="let orderDetail"> {{orderDetail.deliveryDate | date : "dd/MM/yyyy"}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="productionOrderNo">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Production Order No</mat-header-cell>
+        <mat-cell *matCellDef="let orderDetail"> {{orderDetail.productionOrderNo}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="madeTo">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Made to</mat-header-cell>
+        <mat-cell *matCellDef="let orderDetail"> {{orderDetail.madeTo}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="orderLength">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Order Length</mat-header-cell>
+        <mat-cell *matCellDef="let orderDetail"> {{orderDetail.orderQty| number:0}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Status</mat-header-cell>
+        <mat-cell *matCellDef="let orderDetail">{{orderDetail.orderStatus}} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;" matRipple class="element-row" (click)="rowClicked(row)"></mat-row>
+
+    </mat-table>
+    <mat-paginator [length]="5" [pageSize]="10" [pageSizeOptions]="[10, 25]">
+    </mat-paginator>
+
+  </form>
+
+  <mat-grid-list cols="12" rowHeight="45px">
+    <mat-grid-tile colspan="12">
+      <button mat-raised-button color="accent" (click)="onNoClick()" tabindex="-1">Close</button>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+</div>

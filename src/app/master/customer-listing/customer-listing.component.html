@@ -1,0 +1,75 @@
+<div fxLayout="column" class="components-container-gt-xs" fxLayoutGap="20px">
+
+	<div class="spinner-loading-shade" *ngIf="isLoadingResults">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+	</div>
+	
+	<div fxFlex class="table-component-holder mat-elevation-z4">
+	  <mat-toolbar class="table-header">
+		<h1 class="mat-headline center-align">Customer</h1>
+	  </mat-toolbar>
+  
+  
+	  <div class="table-container">
+  
+		<mat-grid-list cols="12" rowHeight="70px">
+		  <mat-grid-tile>
+			<button mat-raised-button color="primary" (click)="btnCreateClick()">Create</button>
+		  </mat-grid-tile>
+  
+		  <mat-grid-tile colspan="10">
+					<mat-form-field>
+							<input matInput [(ngModel)]="filter"  (keyup)="applyFilter($event.target.value)" placeholder="Filter">  
+						</mat-form-field>
+		  </mat-grid-tile>
+
+		  <mat-grid-tile>
+			<button mat-raised-button color="accent">Print</button>
+		  </mat-grid-tile>
+  
+		</mat-grid-list>
+  
+		<mat-table [dataSource]="dataSource" matSortActive="customerCode" matSortDirection="asc" matSortDisableClear matSort>
+		  <ng-container matColumnDef="customerCode">
+			<mat-header-cell *matHeaderCellDef mat-sort-header>Customer Code</mat-header-cell>
+			<mat-cell *matCellDef="let Customer">{{Customer.customerCode}}</mat-cell>
+		  </ng-container>
+		  <ng-container matColumnDef="customerName">
+			<mat-header-cell *matHeaderCellDef mat-sort-header>Customer Name</mat-header-cell>
+			<mat-cell *matCellDef="let Customer">{{Customer.customerName}}</mat-cell>
+		  </ng-container>
+		  <ng-container matColumnDef="customerShortName">
+			<mat-header-cell *matHeaderCellDef mat-sort-header>Short Name</mat-header-cell>
+			<mat-cell *matCellDef="let Customer"> {{Customer.customerShortName}}</mat-cell>
+		  </ng-container>
+		  <ng-container matColumnDef="contractPerson">
+			<mat-header-cell *matHeaderCellDef mat-sort-header>Contract Person</mat-header-cell>
+			<mat-cell *matCellDef="let Customer">{{Customer.contractPerson}}</mat-cell>
+		  </ng-container>
+		  <ng-container matColumnDef="phoneNo">
+			<mat-header-cell *matHeaderCellDef mat-sort-header>Phone No.</mat-header-cell>
+			<mat-cell *matCellDef="let Customer">{{Customer.phoneNo}}</mat-cell>
+		  </ng-container>
+		  <ng-container matColumnDef="faxNo">
+			<mat-header-cell *matHeaderCellDef mat-sort-header>Fax No.</mat-header-cell>
+			<mat-cell *matCellDef="let Customer">{{Customer.faxNo}}</mat-cell>
+		  </ng-container>
+		  <ng-container matColumnDef="emailAddress">
+			<mat-header-cell *matHeaderCellDef mat-sort-header>eMail</mat-header-cell>
+			<mat-cell *matCellDef="let Customer">{{Customer.emailAddress}}</mat-cell>
+		  </ng-container>
+		  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+		  <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="rowClicked(row)"></mat-row>
+		</mat-table>
+  
+		<mat-paginator [length]="5" [pageSize]="10" [pageSizeOptions]="[10, 25]">
+		</mat-paginator>
+  
+	  </div>
+  
+	</div>
+</div>
+				
+				
+					
+				

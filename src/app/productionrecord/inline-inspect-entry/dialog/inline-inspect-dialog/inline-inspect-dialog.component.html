@@ -1,0 +1,113 @@
+<div class="mat-dialog-container" style="height: 265px;">
+  <div class="container">
+
+    <mat-toolbar style="background-color: rgb(182, 208, 230); width: 650px;">
+      <div class="container" fxLayout="row" fxLayoutAlign="center center" fxLayout.xs="column" fxFlexFill>
+        <div fxFlex="100">Defect No. {{dataDefect.rowNo}}</div>
+
+      </div>
+
+
+
+    </mat-toolbar>
+
+
+    <div fxLayout="column" class="components-container-gt-xs" fxLayoutGap="5px">
+      <div class="container" fxLayout="row" fxLayoutAlign="center center" fxLayout.xs="column" fxFlexFill>
+        <div fxFlex="50"></div>
+        <div fxFlex="210px">
+          <mat-button-toggle-group [disabled]="!dataDefect.Editable"  class="example-full-width" [(ngModel)]="dataDefect.defectPosition" aria-label="Font Style">
+              <mat-button-toggle fxFlex fxLayoutAlign="center center" value="L">Left</mat-button-toggle>
+              <mat-button-toggle fxFlex fxLayoutAlign="center center" value="C">Center</mat-button-toggle>
+              <mat-button-toggle fxFlex fxLayoutAlign="center center" value="R">Right</mat-button-toggle>
+          </mat-button-toggle-group>
+        </div>
+        <div fxFlex="50"></div>
+      </div>
+
+
+      <div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center" fxFlexFill style="height: 65px;">
+        <div fxFlex="15px"></div>
+        <div fxFlex="30">
+          <table>
+            <tr>
+              <td>
+                <mat-form-field class="formfield-full-width">
+                  <mat-select placeholder="Defect" [(value)]="dataDefect.defectId" name="Defect" (change)="defectChange($event.value)">
+                    <mat-option *ngFor="let objDefect of objarrDefect" [value]="objDefect.id">
+                      {{objDefect.defectName}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </td>
+            </tr>
+          </table>
+
+        </div>
+        <div fxFlex="5px"></div>
+        <div fxFlex="70">
+          <table>
+            <tr>
+              <td>
+                <mat-form-field class="example-full-width">
+                  <input matInput #input maxlength="10" placeholder="Length" [(ngModel)]="dataDefect.defectAtLength">
+                </mat-form-field>
+              </td>
+              <td>
+
+              </td>
+              <td>
+                <div *ngIf="dataDefect.defect.defectType == 'L'">
+                  <mat-form-field class="example-full-width">
+                    <input matInput #input maxlength="10" (click)="$event.target.select()"
+                    autocomplete="off"
+                    placeholder="Length" [(ngModel)]="dataDefect.defactToLength">
+                  </mat-form-field>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+
+
+        <div fxFlex="15px"></div>
+      </div>
+
+      <div class="container" fxLayout="row" fxLayoutAlign="center center" fxLayout.xs="column" fxFlexFill>
+        <div fxFlex="15px"></div>
+        <div fxFlex="100">
+          <mat-form-field class="example-full-width">
+            <input matInput #input placeholder="Remark" (click)="$event.target.select()" autocomplete="off" [(ngModel)]="dataDefect.remark">
+          </mat-form-field>
+        </div>
+        <div fxFlex="50px"></div>
+      </div>
+
+      <!-- <div mat-dialog-actions> -->
+        
+        <div class="container" fxLayout="row" style="padding-top: 15px;" fxLayoutAlign="center center" fxLayout.xs="column" fxFlexFill>
+          <div fxFlex="100px">
+              <button mat-raised-button [disabled]="!dataDefect.Editable"  color="primary" [type]="submit" [mat-dialog-close]="dataDefect" (click)="confirmAdd()">Save</button>
+          </div>
+          <div fxFlex="100px">
+              <button mat-raised-button (click)="onNoClick()" tabindex="-1">Cancel</button>
+          </div>
+          <div fxFlex="100">
+
+          </div>
+          <div fxFlex="100px">
+              <button mat-raised-button color="accent" [disabled]="!dataDefect.Editable" (click)="deleteItemClick()">
+                  <mat-icon>delete</mat-icon> Delete
+                </button>
+          </div>
+        </div>
+
+
+      <!-- </div> -->
+    </div>
+
+
+
+  </div>
+
+</div>

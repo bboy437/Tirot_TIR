@@ -1,0 +1,91 @@
+
+/* angular-cli file: src/styles.css */
+@import "../../node_modules/angular-calendar/css/angular-calendar.css";
+@import "../../node_modules/font-awesome/css/font-awesome.css";
+/* You can add global styles to this file, and also import other style files */
+
+/*#region table*/
+.mat-toolbar-row {
+  height: 40px;
+}
+
+.table-header {
+  background-color: #5c6bc0;
+  color: white;
+  padding: 0 5px;
+  height: 40px !important;
+}
+
+.table-container {
+  padding: 5px 15px 15px 15px;
+}
+.table-component-holder {
+  border: 1px solid #5c6bc0 !important;
+  background-color: white !important;
+}
+
+/*#endregion table*/
+
+/*#region mat-table*/
+
+.mat-header-cell {
+  display:flex;
+  justify-content:center;
+}
+
+.mat-cell{
+  display:flex !important;
+  justify-content:center;
+}
+
+.mat-header-row {
+  background-color: #9cb5e4;
+}
+
+// .mat-row:nth-child(even) {
+//   background-color: #e9e5e5;
+//   color: white;
+// }
+.mat-row:hover {
+  background-color: #fadac8d3;
+}
+
+.mat-row {
+  min-height: 33px;
+}
+
+/*#endregion mat-table*/
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.mat-button-toggle-checkedOK{
+  background-color: #8be487ea;
+}
+
+.mat-button-toggle-checkedNG{
+  background-color: #e48787ea;
+}
+
+
+
+
+.spinner-loading-shade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 56px;
+  right: 0;
+  background: rgba(0, 0, 0, 0.15);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mat-raised-button-close
+{
+  line-height:46px;
+}
